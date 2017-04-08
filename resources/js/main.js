@@ -21,8 +21,11 @@ var $$ = Dom7;
 
 var isResizing = false;
 var lastClientX = 0;
+var $$drag = $$('#drag');
+var $$viewLeft = $$('.view-left');
+var $$viewRight = $$('.view-main');
 
-$$('#drag').on('mousedown', function(e) {
+$$drag.on('mousedown', function(e) {
     isResizing = true;
 });
 
@@ -31,21 +34,28 @@ $$(document).on('mousemove', function(e) {
     if (!isResizing) {
         return;
     }
-    if (e.clientX >= 200) {
+    if (e.clientX >= 320) {
+        lastClientX = 320;
+    } else if (e.clientX >= 200) {
         lastClientX = e.clientX;
-        $$('.view-left').css('width', e.clientX + 'px');
-        $$('.view-main').css('width', 'calc(100% - ' + (e.clientX + 1) + 'px)');
     } else if (e.clientX >= 0 && e.clientX < 50) {
         lastClientX = 0;
-        $$('.view-left').css('width', '0px');
-        $$('.view-main').css('width', 'calc(100% - 1px)');
     } else if (lastClientX == 0 && e.clientX >= 50) {
-        $$('.view-left').css('width', '200px');
-        $$('.view-main').css('width', 'calc(100% - 201px)');
+        lastClientX = 200;
+    } else {
+        return;
     }
+    resetWindowSize(lastClientX);
 }).on('mouseup', function(e) {
     isResizing = false;
 });
+
+function resetWindowSize(clientX) {
+    $$viewLeft.css('width', clientX + 'px');
+    $$viewRight.css('width', 'calc(100% - ' + (clientX + 1) + 'px)');
+    $$drag.css('left', clientX - 4 + 'px');
+    myApp.sizeNavbars('.view');
+}
 
 /****************************************************************************************************************
  *                                                  main view
