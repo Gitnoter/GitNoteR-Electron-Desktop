@@ -1,0 +1,24 @@
+{
+    "name": "GitNoteR",
+    "version": "1.0.0",
+    "description": "A simple Markdown notes application with GitNoteR",
+    "main": "main.js",
+    "scripts": {
+        "start": "/Applications/Electron.app/Contents/MacOS/Electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://git.coding.net/MakeHui/GitNoteR-Electron-Desktop.git"
+    },
+    "keywords": [
+        "GitNoteR",
+        "Git",
+        "Note"
+    ],
+    "author": "MakeHui",
+    "dependencies": {
+        "electron-log": "^2.0.2",
+        "nodegit/nodegit": "^0.18.0"
+    },
+    "devDependencies": {}
+}

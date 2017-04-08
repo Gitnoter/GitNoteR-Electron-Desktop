@@ -1,0 +1,26 @@
+/* Your app custom files in this file */
+
+html {
+  user-select: none;
+}
+
+.view-left {
+  float: left;
+  width: 320px;
+  border-right: 1px solid #b2b2b2;
+}
+
+.view-main {
+  width: calc(100% - 321px);
+}
+
+#drag {
+  /*background-color: #000;*/
+  position: absolute;
+  left: -4px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  z-index: 999;
+  cursor: w-resize;
+}
